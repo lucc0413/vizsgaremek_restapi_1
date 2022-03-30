@@ -18,10 +18,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::post("/login",[AuthController::class , "login"]);
 Route::post("/register",[AuthController::class , "register"]);
-Route::get("/library",[LibraryController::class,"index"]);
-Route::post("/library{id}",[LibraryController::class,"show"]);
-Route::delete("library{id}",[LibraryController::class,"delete"]);
-Route::put("library{library}",[LibraryController::class,"update"]);
+
+Route::get("/libraryIds",[LibraryController::class,"getLibraryIds"]);
+Route::get("/library/{id}",[LibraryController::class,"getLibrary"]);
+Route::post("/createLibrary",[LibraryController::class,"createLibrary"]);
+Route::put("/library/{id}",[LibraryController::class,"updateLibrary"]);
+Route::delete("/library/{id}",[LibraryController::class,"deleteLibrary"]);
 
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {

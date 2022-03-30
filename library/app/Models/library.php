@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Sanctum\HasApiTokens;
 
-class library extends Model
+class Library extends Model
 {
     use HasFactory, HasApiTokens;
 
@@ -14,6 +14,6 @@ class library extends Model
         "librarycode",
         "author",
         "title",
-        "stock",
+        "quantity",
     ];
 }
