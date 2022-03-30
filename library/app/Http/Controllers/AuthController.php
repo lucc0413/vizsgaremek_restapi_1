@@ -19,6 +19,7 @@ class AuthController extends Controller
             "name" => "required",
             "email" => "required",
             "password" => "required",
+            "telephone" => "required",
         ]);
 
 
@@ -27,6 +28,7 @@ class AuthController extends Controller
             "name" => $request->name,
             "email" => $request->email,
             "password" => Hash::make($request->password),
+            "telephone" => $request->telephone,
         ]);
 
         $token = $user->createToken('authToken')->plainTextToken;

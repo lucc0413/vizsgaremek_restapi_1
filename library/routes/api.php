@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LibraryController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,9 +17,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+//Authetication
 Route::post("/login",[AuthController::class , "login"]);
 Route::post("/register",[AuthController::class , "register"]);
 
+
+//Library
 Route::get("/libraryIds",[LibraryController::class,"getLibraryIds"]);
 Route::get("/library/{id}",[LibraryController::class,"getLibrary"]);
 Route::post("/createLibrary",[LibraryController::class,"createLibrary"]);
@@ -26,7 +31,12 @@ Route::put("/library/{id}",[LibraryController::class,"updateLibrary"]);
 Route::delete("/library/{id}",[LibraryController::class,"deleteLibrary"]);
 
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+
+
+
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::post("/createUser",[UserController::class,"createUser"]);
+
 

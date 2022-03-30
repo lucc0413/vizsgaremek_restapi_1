@@ -28,11 +28,6 @@ class LibraryController extends Controller
 
         return response()->json($library);
     }
-
-    // public function show (Library $book){
-    //     return view('library.show', compact('book'));
-    // }  
-
     
     
    
