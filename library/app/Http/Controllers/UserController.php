@@ -27,32 +27,4 @@ class UserController extends Controller
 
         return response()->json($name);
     }
-
-
-
-//write a function called createUser that creates a new user based on the JSON data sent in the request body and returns the new user in JSON format
-public function createUser(Request $request)
-{
-    $fields = $request->validate([
-        "name" => "required",
-        "email" => "required",
-        "password" => "required",
-        "telephone" => "required",
-    ]);
-
-    $user = User::create([
-        "name" => $request->name,
-        "email" => $request->email,
-        "password" => Hash::make($request->password),
-        "telephone" => $request->telephone,
-    ]);
-
-    $token = $user->createToken('authToken')->plainTextToken;
-
-    $response = [
-        "user" => $user,
-        "token" => $token,
-    ];
-    return response($response, 201);
-}
 }

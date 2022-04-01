@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Response;
 use Illuminate\Validation\Validator;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 
 class AuthController extends Controller
 {
@@ -22,8 +23,6 @@ class AuthController extends Controller
             "telephone" => "required",
         ]);
 
-
-
         $user = User::create([
             "name" => $request->name,
             "email" => $request->email,
@@ -31,13 +30,7 @@ class AuthController extends Controller
             "telephone" => $request->telephone,
         ]);
 
-        $token = $user->createToken('authToken')->plainTextToken;
-
-        $response = [
-            "user" => $user,
-            "token" => $token,
-        ];
-        return response($response, 201);
+        return response($user, 201);
     }
 
 
