@@ -67,7 +67,7 @@ class RentalController extends Controller
                     'book_id' => $request->book_id,
                     'quantity' => -$request->quantity,
                 ]);
-                return response()->json(new RentalResource($rental), 200);
+                return response()->json(["message" => "You have succesfully rented this book"], 200);
             }
             return response()->json([
                 "message" => "Not enough books in the library"
